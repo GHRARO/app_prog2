@@ -26,29 +26,40 @@ export default function App() {
     if (operacao == '+') {
       setDadosVisor(valor1 + Number(dadosVisor));
     }
+    if (operacao == '/') {
+      setDadosVisor(valor1 / Number(dadosVisor));
+    }
+    if (operacao == '*') {
+      setDadosVisor(valor1 * Number(dadosVisor));
+    }
+    if (operacao == '-') {
+      setDadosVisor(valor1 - Number(dadosVisor));
+    }
+
   }
 
   return (
+    <View style={styles.containerColor}>
     <View style={styles.container}>
-      
+
       <TextInput style={styles.estilo_visor}
-       editable={false}
-       value={dadosVisor}></TextInput>
+        editable={false}
+        value={dadosVisor}></TextInput>
 
       <View style={styles.view_linha}>
         <TouchableOpacity style={styles.botao_num}
-          onPress={() => addNumeroAoVisor('7')}>
-          <Text style={styles.texto_botao}>7</Text>
+          onPress={() => addNumeroAoVisor('1')}>
+          <Text style={styles.texto_botao}>1</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao_num}
-          onPress={() => addNumeroAoVisor('8')}>
-          <Text style={styles.texto_botao}>8</Text>
+          onPress={() => addNumeroAoVisor('2')}>
+          <Text style={styles.texto_botao}>2</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao_num}
-          onPress={() => addNumeroAoVisor('9')}>
-          <Text style={styles.texto_botao}>9</Text>
+          onPress={() => addNumeroAoVisor('3')}>
+          <Text style={styles.texto_botao}>3</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao_num}
@@ -77,49 +88,87 @@ export default function App() {
           onPress={() => configOperacao('+')}>
           <Text style={styles.texto_botao}>+</Text>
         </TouchableOpacity>
+
       </View>
 
       <View style={styles.view_linha}>
         <TouchableOpacity style={styles.botao_num}
-          onPress={() => addNumeroAoVisor('1')}>
-          <Text style={styles.texto_botao}>1</Text>
+          onPress={() => addNumeroAoVisor('7')}>
+          <Text style={styles.texto_botao}>7</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao_num}
-          onPress={() => addNumeroAoVisor('2')}>
-          <Text style={styles.texto_botao}>2</Text>
+          onPress={() => addNumeroAoVisor('8')}>
+          <Text style={styles.texto_botao}>8</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao_num}
-          onPress={() => addNumeroAoVisor('3')}>
-          <Text style={styles.texto_botao}>3</Text>
+          onPress={() => addNumeroAoVisor('9')}>
+          <Text style={styles.texto_botao}>9</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => configOperacao('*')}>
+          <Text style={styles.texto_botao}>*</Text>
+        </TouchableOpacity>
+
+
+
+
+
+
+      </View>
+      <View style={styles.view_linha}>
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => addNumeroAoVisor('0')}>
+          <Text style={styles.texto_botao}>0</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => configOperacao('/')}>
+          <Text style={styles.texto_botao}>/</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => configOperacao('-')}>
+          <Text style={styles.texto_botao}>-</Text>
+        </TouchableOpacity>
+        
         <TouchableOpacity style={styles.botao_num}
           onPress={() => executarOperacao()}>
           <Text style={styles.texto_botao}>=</Text>
         </TouchableOpacity>
+
+
       </View>
 
       <StatusBar style="auto" />
     </View>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  containerColor:{
+    backgroundColor: '#123',
+    width: '100%',
+    height:'100%'
+  },
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 2,
+    
     alignItems: 'center',
     justifyContent: 'center',
+    width: '50%',
   },
 
   estilo_visor: {
-    borderWidth: 1,
+    borderWidth: 2,
     width: '95%',
     height: '15%',
     fontSize: 30,
-    borderRadius: 10,
+    borderRadius: 5,
+    backgroundColor: '#256699',
   },
 
   view_linha: {
@@ -130,12 +179,13 @@ const styles = StyleSheet.create({
   },
 
   botao_num: {
-    borderWidth: 1,
-    width: '25%',
+    borderWidth: 2,
+    width: '26%',
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
+    backgroundColor: '#256699',
   },
 
   texto_botao: {
